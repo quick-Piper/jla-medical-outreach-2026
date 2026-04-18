@@ -1200,7 +1200,8 @@
     /* ──────────────────────────────────────────────────
        HERO SLIDESHOW
     ────────────────────────────────────────────────── */
-    const SLIDESHOW_FILES = [
+    // _029 is pinned first; the rest are shuffled randomly on every page load
+    const SLIDESHOW_REST = [
       'JLA_MO_26_035.jpg',
       'JLA_MO_26_034.jpg',
       'JLA_MO_26_003.jpg',
@@ -1212,8 +1213,13 @@
       'JLA_MO_26_017.jpg',
       'JLA_MO_26_019.jpg',
       'JLA_MO_26_023.jpg',
-      'JLA_MO_26_029.jpg',
     ];
+    // Fisher-Yates shuffle
+    for (let i = SLIDESHOW_REST.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [SLIDESHOW_REST[i], SLIDESHOW_REST[j]] = [SLIDESHOW_REST[j], SLIDESHOW_REST[i]];
+    }
+    const SLIDESHOW_FILES = ['JLA_MO_26_029.jpg', ...SLIDESHOW_REST];
 
     const heroSlides     = document.getElementById('heroSlides');
     const SLIDE_DURATION = 5000; // ms each slide stays visible
