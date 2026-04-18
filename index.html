@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RCCG Jesus Lovers Assembly · 2026 Medical Outreach · Photo Highlights">
+  <title>2026 Medical Outreach · RCCG Jesus Lovers Assembly</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080d1a;
+      color: #e8e4d9;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    button { border: none; background: none; cursor: pointer; }
+
+    /* ─────────────────────────────────────────
+       CSS VARIABLES
+    ───────────────────────────────────────── */
+    :root {
+      --navy:        #080d1a;
+      --navy-deep:   #050810;
+      --maroon:      #120618;
+      --gold:        #c9a227;
+      --gold-light:  #e8c84b;
+      --gold-dim:    #a87a1a;
+      --white:       #ffffff;
+      --off-white:   #f0ece3;
+      --muted:       rgba(255, 255, 255, 0.6);
+      --gallery-bg:  #0d0d0d;
+
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-out:    cubic-bezier(0.25, 0.8, 0.25, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─────────────────────────────────────────
+       NAVBAR
+    ───────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.45s ease, backdrop-filter 0.45s ease, box-shadow 0.45s ease;
+    }
+    .navbar.scrolled {
+      background: rgba(5, 8, 16, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .nav-brand-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--off-white);
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+    }
+
+    .nav-cta {
+      padding: 8px 22px;
+      border-radius: 100px;
+      border: 1px solid rgba(201, 162, 39, 0.45);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 96px;
+      overflow: hidden;
+      background: linear-gradient(
+        158deg,
+        #060a17 0%,
+        #0a1228 28%,
+        #110420 58%,
+        #0c0715 80%,
+        #060a17 100%
+      );
+    }
+
+    /* Cross-grid texture */
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.032'%3E%3Crect x='22' y='8' width='4' height='32' rx='2'/%3E%3Crect x='8' y='22' width='32' height='4' rx='2'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* Ambient gold glow */
+    .hero-glow {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(
+        circle,
+        rgba(201, 162, 39, 0.07) 0%,
+        rgba(80, 20, 60, 0.04) 45%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      width: 100%;
+    }
+
+    .hero-logo {
+      width: 116px;
+      height: 116px;
+      object-fit: contain;
+      margin: 0 auto 30px;
+      filter: drop-shadow(0 6px 28px rgba(201, 162, 39, 0.28));
+      animation: fadeSlideDown 0.95s var(--ease-out) both;
+    }
+
+    .hero-church-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(14px, 2.6vw, 20px);
+      font-weight: 600;
+      color: var(--off-white);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      animation: fadeSlideUp 0.95s 0.12s var(--ease-out) both;
+    }
+
+    .hero-rule {
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 22px auto;
+      animation: expandRule 0.95s 0.28s var(--ease-out) both;
+    }
+
+    .hero-event {
+      margin-bottom: 14px;
+      animation: fadeSlideUp 0.95s 0.28s var(--ease-out) both;
+    }
+
+    .hero-event-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 9vw, 80px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      background: linear-gradient(
+        145deg,
+        var(--gold-light) 0%,
+        var(--gold) 45%,
+        var(--gold-dim) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(24px, 4.5vw, 38px);
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.015em;
+      margin-bottom: 52px;
+      animation: fadeSlideUp 0.95s 0.44s var(--ease-out) both;
+    }
+
+    .hero-cta-wrap {
+      animation: fadeSlideUp 0.95s 0.58s var(--ease-out) both;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 17px 40px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+      color: #06090e;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.035em;
+      text-decoration: none;
+      box-shadow:
+        0 8px 32px rgba(201, 162, 39, 0.38),
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transition:
+        transform 0.22s var(--ease-spring),
+        box-shadow 0.22s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 55%);
+    }
+    .hero-cta:hover {
+      transform: translateY(-3px) scale(1.035);
+      box-shadow:
+        0 16px 44px rgba(201, 162, 39, 0.48),
+        0 4px 14px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    .hero-cta:active { transform: translateY(0) scale(0.98); }
+
+    .hero-cta-arrow {
+      transition: transform 0.22s ease;
+    }
+    .hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.45;
+      animation: fadeIn 1s 1.2s both;
+      pointer-events: none;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, transparent, var(--gold));
+      animation: scrollPulse 2s 1.5s ease-in-out infinite;
+    }
+    .hero-scroll-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─────────────────────────────────────────
+       GALLERY SECTION
+    ───────────────────────────────────────── */
+    .gallery-section {
+      background: var(--gallery-bg);
+      padding: 88px 0 108px;
+    }
+
+    .gallery-header {
+      text-align: center;
+      padding: 0 24px;
+      margin-bottom: 60px;
+    }
+    .gallery-eyebrow {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .gallery-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .gallery-header p {
+      font-size: 15.5px;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 1640px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    @media (max-width: 1100px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 7px; padding: 0 10px; }
+    }
+    @media (max-width: 400px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      cursor: pointer;
+      aspect-ratio: 4 / 3;
+      background: #1c1c1c;
+      /* entrance animation state */
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.55s var(--ease-smooth),
+        transform 0.55s var(--ease-smooth),
+        box-shadow 0.4s ease;
+    }
+    .gallery-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .gallery-item:hover {
+      box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(201, 162, 39, 0.12);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-smooth), filter 0.5s ease;
+      will-change: transform;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.075);
+      filter: brightness(1.06);
+    }
+
+    /* Hover scrim */
+    .gallery-item-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.35s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .gallery-item:hover .gallery-item-scrim {
+      background: rgba(0, 0, 0, 0.14);
+    }
+
+    /* Zoom icon */
+    .gallery-item-zoom {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.6);
+      opacity: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease, transform 0.3s var(--ease-spring);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .gallery-item:hover .gallery-item-zoom {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Shimmer skeleton */
+    .gallery-item.skeleton {
+      background: linear-gradient(
+        90deg,
+        #1c1c1c 25%,
+        #252525 50%,
+        #1c1c1c 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.6s ease-in-out infinite;
+    }
+
+    /* ─────────────────────────────────────────
+       LIGHTBOX
+    ───────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.32s ease;
+    }
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Dark blurred backdrop */
+    .lb-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(3, 5, 12, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* Touch zone — covers the whole viewport */
+    .lb-touchzone {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Image wrapper — handles the open/close scale animation */
+    .lb-img-wrapper {
+      position: relative;
+      max-width: calc(100vw - 130px);
+      max-height: calc(100vh - 100px);
+      transform: scale(0.86);
+      opacity: 0;
+      transition:
+        transform 0.38s var(--ease-spring),
+        opacity 0.32s ease;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+    .lightbox.open .lb-img-wrapper {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* The actual image — receives zoom/pan transforms */
+    .lb-img {
+      display: block;
+      max-width: calc(100vw - 130px);
+      max-height: calc(100vh - 100px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      transform-origin: center center;
+      touch-action: none;
+    }
+
+    /* Top bar */
+    .lb-topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(3, 5, 12, 0.75) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .lb-counter {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: 100px;
+      pointer-events: all;
+    }
+
+    .lb-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      pointer-events: all;
+      transition: background 0.22s ease, transform 0.28s var(--ease-spring), border-color 0.22s ease;
+    }
+    .lb-close:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: rotate(90deg);
+    }
+    .lb-close:active { transform: rotate(90deg) scale(0.92); }
+
+    /* Nav arrows */
+    .lb-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition:
+        background 0.22s ease,
+        border-color 0.22s ease,
+        transform 0.22s var(--ease-spring);
+    }
+    .lb-arrow:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+    .lb-arrow-prev { left: 18px; }
+    .lb-arrow-prev:hover { transform: translateY(-50%) scale(1.08) translateX(-2px); }
+    .lb-arrow-next { right: 18px; }
+    .lb-arrow-next:hover { transform: translateY(-50%) scale(1.08) translateX(2px); }
+
+    @media (max-width: 600px) {
+      .lb-arrow { display: none; }
+      .lb-img-wrapper {
+        max-width: 100vw;
+        max-height: calc(100vh - 80px);
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .lb-img {
+        max-width: 100vw;
+        max-height: calc(100vh - 80px);
+      }
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    .footer {
+      background: #040609;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      margin: 0 auto 18px;
+      opacity: 0.75;
+    }
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--off-white);
+      margin-bottom: 8px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-verse {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.3);
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* ─────────────────────────────────────────
+       KEYFRAMES
+    ───────────────────────────────────────── */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes expandRule {
+      from { width: 0; opacity: 0; }
+      to   { width: 64px; opacity: 1; }
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.45; }
+      50%       { transform: scaleY(1.3); opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar" aria-label="Site navigation">
+    <a href="#" class="nav-brand" aria-label="RCCG Jesus Lovers Assembly">
+      <img src="RCCG%20logo.png" alt="RCCG Logo" loading="eager">
+      <span class="nav-brand-text">RCCG Jesus Lovers Assembly</span>
+    </a>
+    <a href="#gallery" class="nav-cta">View Gallery</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero" aria-label="Hero">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="hero-glow"    aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <img
+        src="RCCG%20logo.png"
+        alt="RCCG Jesus Lovers Assembly"
+        class="hero-logo"
+        loading="eager"
+      >
+
+      <p class="hero-church-name">RCCG Jesus Lovers Assembly</p>
+
+      <div class="hero-rule" aria-hidden="true"></div>
+
+      <div class="hero-event">
+        <h1 class="hero-event-title">2026 Medical Outreach</h1>
+      </div>
+
+      <p class="hero-subtitle">Photo Highlights</p>
+
+      <div class="hero-cta-wrap">
+        <a href="#gallery" class="hero-cta" aria-label="Scroll to gallery">
+          View Gallery
+          <svg class="hero-cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="hero-scroll-label">Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ── -->
+  <section class="gallery-section" id="gallery" aria-label="Photo gallery">
+    <div class="gallery-header">
+      <span class="gallery-eyebrow">Photo Gallery</span>
+      <h2>Capturing Compassion in Action</h2>
+      <p>A visual journey through the 2026 Medical Outreach — healing hands, hopeful hearts, and a community served with love.</p>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid" role="list" aria-label="Gallery images"></div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" aria-label="Site footer">
+    <img src="RCCG%20logo.png" alt="RCCG Jesus Lovers Assembly" class="footer-logo" loading="lazy">
+    <p class="footer-name">RCCG Jesus Lovers Assembly</p>
+    <p class="footer-copy">© 2026 RCCG Jesus Lovers Assembly · All rights reserved</p>
+    <p class="footer-verse">Jesus Christ the same yesterday, and today, and forever — Hebrews 13:8</p>
+  </footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo viewer"
+  >
+    <!-- Backdrop (click to close) -->
+    <div class="lb-backdrop" id="lbBackdrop" aria-hidden="true"></div>
+
+    <!-- Touch / interaction zone -->
+    <div class="lb-touchzone" id="lbTouchzone">
+      <!-- Scale+fade animation wrapper -->
+      <div class="lb-img-wrapper" id="lbImgWrapper">
+        <img
+          id="lbImg"
+          class="lb-img"
+          src=""
+          alt=""
+          draggable="false"
+        >
+      </div>
+    </div>
+
+    <!-- Top bar: counter + close -->
+    <div class="lb-topbar">
+      <span class="lb-counter" id="lbCounter" aria-live="polite">1 / 35</span>
+      <button class="lb-close" id="lbClose" aria-label="Close photo viewer">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation arrows -->
+    <button class="lb-arrow lb-arrow-prev" id="lbPrev" aria-label="Previous photo">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="lb-arrow lb-arrow-next" id="lbNext" aria-label="Next photo">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    /* ──────────────────────────────────────────────────
+       IMAGE DATA
+    ────────────────────────────────────────────────── */
+    const BASE_URL = 'https://gfoehqqdgkswtonlutwg.supabase.co/storage/v1/object/public/jla-medical-outreach-2026/';
+    const TOTAL   = 35;
+    const images  = Array.from({ length: TOTAL }, (_, i) => {
+      const n = String(i + 1).padStart(3, '0');
+      return `${BASE_URL}JLA_MO_26_${n}.jpg`;
+    });
+
+    /* ──────────────────────────────────────────────────
+       GALLERY GRID
+    ────────────────────────────────────────────────── */
+    const grid = document.getElementById('galleryGrid');
+
+    images.forEach((src, i) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item skeleton';
+      item.setAttribute('role', 'listitem');
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-label', `Photo ${i + 1} of ${TOTAL}`);
+
+      const scrim = document.createElement('div');
+      scrim.className = 'gallery-item-scrim';
+
+      const zoom = document.createElement('div');
+      zoom.className = 'gallery-item-zoom';
+      zoom.setAttribute('aria-hidden', 'true');
+      zoom.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="9" cy="9" r="5.5" stroke="white" stroke-width="1.8"/>
+        <path d="M14 14l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M9 6.5v5M6.5 9h5" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>`;
+
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.alt = `2026 Medical Outreach — Photo ${i + 1}`;
+      img.src = src;
+      img.onload  = () => item.classList.remove('skeleton');
+      img.onerror = () => item.classList.remove('skeleton');
+
+      item.appendChild(img);
+      item.appendChild(scrim);
+      item.appendChild(zoom);
+
+      const open = () => openLightbox(i);
+      item.addEventListener('click', open);
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+      });
+
+      grid.appendChild(item);
+    });
+
+    /* Scroll-reveal with staggered delay */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el  = entry.target;
+        const idx = Number(el.dataset.idx);
+        const col = idx % (window.innerWidth > 1100 ? 4 : window.innerWidth > 680 ? 3 : 2);
+        el.style.transitionDelay = `${col * 60}ms`;
+        el.classList.add('visible');
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.08 });
+
+    Array.from(grid.children).forEach((el, i) => {
+      el.dataset.idx = i;
+      revealObserver.observe(el);
+    });
+
+    /* ──────────────────────────────────────────────────
+       LIGHTBOX STATE
+    ────────────────────────────────────────────────── */
+    const lightbox   = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lbImg');
+    const lbCounter  = document.getElementById('lbCounter');
+    const lbWrapper  = document.getElementById('lbImgWrapper');
+    const lbTouchzone = document.getElementById('lbTouchzone');
+
+    let currentIdx = 0;
+    let isOpen     = false;
+
+    // Zoom / pan state
+    let imgScale    = 1;
+    let panX        = 0;
+    let panY        = 0;
+
+    // Pinch state
+    let isPinching  = false;
+    let pinchStart  = 0;
+    let scaleAtPinchStart = 1;
+    let panXAtPinchStart = 0;
+    let panYAtPinchStart = 0;
+
+    // Pan drag state
+    let isDragging  = false;
+    let dragOriginX = 0;
+    let dragOriginY = 0;
+
+    // Swipe state
+    let swipeStartX    = 0;
+    let swipeStartTime = 0;
+    let isSwipe        = false;
+
+    // Double-tap state
+    let lastTap = 0;
+
+    function applyTransform(animated = false) {
+      lbImg.style.transition = animated ? 'transform 0.22s var(--ease-smooth)' : 'none';
+      lbImg.style.transform  = `translate(${panX}px, ${panY}px) scale(${imgScale})`;
+    }
+
+    function resetZoom(animated = true) {
+      imgScale = 1;
+      panX     = 0;
+      panY     = 0;
+      applyTransform(animated);
+    }
+
+    function clampPan() {
+      if (imgScale <= 1) { panX = 0; panY = 0; return; }
+      const rect     = lbImg.getBoundingClientRect();
+      const overflowX = Math.max(0, (rect.width  - window.innerWidth)  / 2);
+      const overflowY = Math.max(0, (rect.height - window.innerHeight) / 2);
+      panX = Math.max(-overflowX, Math.min(overflowX, panX));
+      panY = Math.max(-overflowY, Math.min(overflowY, panY));
+    }
+
+    /* ──────────────────────────────────────────────────
+       OPEN / CLOSE / NAVIGATE
+    ────────────────────────────────────────────────── */
+    function openLightbox(idx) {
+      currentIdx = idx;
+      isOpen     = true;
+      document.body.style.overflow = 'hidden';
+      loadImage(idx);
+      resetZoom(false);
+      lightbox.classList.add('open');
+      preload(idx);
+    }
+
+    function closeLightbox() {
+      isOpen = false;
+      // Snap zoom to 1 before closing so wrapper animation is clean
+      imgScale = 1; panX = 0; panY = 0;
+      lbImg.style.transition = 'none';
+      lbImg.style.transform  = 'translate(0,0) scale(1)';
+      lightbox.classList.remove('open');
+      setTimeout(() => { document.body.style.overflow = ''; }, 340);
+    }
+
+    function loadImage(idx) {
+      lbImg.src = images[idx];
+      lbImg.alt = `2026 Medical Outreach — Photo ${idx + 1}`;
+      lbCounter.textContent = `${idx + 1} / ${images.length}`;
+    }
+
+    function navigateTo(nextIdx) {
+      const idx = ((nextIdx % TOTAL) + TOTAL) % TOTAL;
+      currentIdx = idx;
+      resetZoom(false);
+
+      // Fade-swap animation
+      lbWrapper.style.transition = 'opacity 0.14s ease, transform 0.14s ease';
+      lbWrapper.style.opacity    = '0';
+      lbWrapper.style.transform  = 'scale(0.95)';
+
+      setTimeout(() => {
+        loadImage(idx);
+        lbWrapper.style.opacity   = '1';
+        lbWrapper.style.transform = 'scale(1)';
+        setTimeout(() => { lbWrapper.style.transition = ''; }, 200);
+      }, 145);
+
+      preload(idx);
+    }
+
+    const navigateNext = () => navigateTo(currentIdx + 1);
+    const navigatePrev = () => navigateTo(currentIdx - 1);
+
+    function preload(idx) {
+      const ids = [
+        (idx + 1) % TOTAL,
+        (idx - 1 + TOTAL) % TOTAL,
+        (idx + 2) % TOTAL,
+      ];
+      ids.forEach((i) => { const p = new Image(); p.src = images[i]; });
+    }
+
+    /* ──────────────────────────────────────────────────
+       CONTROLS
+    ────────────────────────────────────────────────── */
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbBackdrop').addEventListener('click', closeLightbox);
+    document.getElementById('lbNext').addEventListener('click', navigateNext);
+    document.getElementById('lbPrev').addEventListener('click', navigatePrev);
+
+    /* ──────────────────────────────────────────────────
+       KEYBOARD
+    ────────────────────────────────────────────────── */
+    document.addEventListener('keydown', (e) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowRight')  navigateNext();
+      if (e.key === 'ArrowLeft')   navigatePrev();
+    });
+
+    /* ──────────────────────────────────────────────────
+       TOUCH: SWIPE · PINCH-TO-ZOOM · PAN · DOUBLE-TAP
+    ────────────────────────────────────────────────── */
+    function touchDist(t) {
+      const dx = t[0].clientX - t[1].clientX;
+      const dy = t[0].clientY - t[1].clientY;
+      return Math.hypot(dx, dy);
+    }
+
+    lbTouchzone.addEventListener('touchstart', (e) => {
+      if (!isOpen) return;
+
+      if (e.touches.length === 2) {
+        // ── Pinch start ──
+        isPinching           = true;
+        isSwipe              = false;
+        isDragging           = false;
+        pinchStart           = touchDist(e.touches);
+        scaleAtPinchStart    = imgScale;
+        panXAtPinchStart     = panX;
+        panYAtPinchStart     = panY;
+        e.preventDefault();
+        return;
+      }
+
+      if (e.touches.length === 1) {
+        const t = e.touches[0];
+
+        // ── Double-tap to toggle zoom ──
+        const now = Date.now();
+        if (now - lastTap < 280) {
+          e.preventDefault();
+          if (imgScale > 1) {
+            resetZoom(true);
+          } else {
+            imgScale = 2.5;
+            applyTransform(true);
+          }
+          lastTap = 0;
+          return;
+        }
+        lastTap = now;
+
+        if (imgScale > 1) {
+          // ── Pan start ──
+          isDragging  = true;
+          isSwipe     = false;
+          dragOriginX = t.clientX - panX;
+          dragOriginY = t.clientY - panY;
+        } else {
+          // ── Swipe start ──
+          isSwipe        = true;
+          isDragging     = false;
+          swipeStartX    = t.clientX;
+          swipeStartTime = Date.now();
+        }
+      }
+    }, { passive: false });
+
+    lbTouchzone.addEventListener('touchmove', (e) => {
+      if (!isOpen) return;
+
+      if (e.touches.length === 2 && isPinching) {
+        const dist     = touchDist(e.touches);
+        const newScale = Math.min(Math.max(scaleAtPinchStart * (dist / pinchStart), 1), 5);
+        imgScale = newScale;
+        applyTransform();
+        e.preventDefault();
+        return;
+      }
+
+      if (e.touches.length === 1) {
+        if (isDragging && imgScale > 1) {
+          panX = e.touches[0].clientX - dragOriginX;
+          panY = e.touches[0].clientY - dragOriginY;
+          applyTransform();
+          e.preventDefault();
+        }
+      }
+    }, { passive: false });
+
+    lbTouchzone.addEventListener('touchend', (e) => {
+      if (!isOpen) return;
+
+      if (e.touches.length < 2) isPinching = false;
+
+      if (isDragging) {
+        isDragging = false;
+        clampPan();
+        applyTransform(true);
+      }
+
+      if (isSwipe && e.changedTouches.length > 0 && imgScale <= 1) {
+        const dx  = e.changedTouches[0].clientX - swipeStartX;
+        const dt  = Math.max(1, Date.now() - swipeStartTime);
+        const vel = Math.abs(dx) / dt;
+        if (Math.abs(dx) > 48 || vel > 0.32) {
+          dx < 0 ? navigateNext() : navigatePrev();
+        }
+        isSwipe = false;
+      }
+
+      if (imgScale <= 1) resetZoom(true);
+    });
+
+    /* ──────────────────────────────────────────────────
+       NAVBAR SCROLL
+    ────────────────────────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    const onScroll = () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // run once in case page is already scrolled
+  </script>
+</body>
+</html>
