@@ -118,20 +118,46 @@
       text-align: center;
       padding: 120px 24px 96px;
       overflow: hidden;
-      background: linear-gradient(
-        158deg,
-        #060a17 0%,
-        #0a1228 28%,
-        #110420 58%,
-        #0c0715 80%,
-        #060a17 100%
-      );
+      background: #060a17; /* fallback while first image loads */
+    }
+
+    /* Slideshow images */
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      will-change: opacity, transform;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      animation: heroKenBurns 7s ease-in-out forwards;
+    }
+
+    /* Dark overlay — keeps text legible over any photo */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to bottom,
+          rgba(4, 6, 18, 0.55) 0%,
+          rgba(4, 6, 18, 0.42) 40%,
+          rgba(4, 6, 18, 0.68) 100%);
     }
 
     /* Cross-grid texture */
     .hero-texture {
       position: absolute;
       inset: 0;
+      z-index: 2;
       pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.032'%3E%3Crect x='22' y='8' width='4' height='32' rx='2'/%3E%3Crect x='8' y='22' width='32' height='4' rx='2'/%3E%3C/g%3E%3C/svg%3E");
     }
@@ -142,6 +168,7 @@
       top: 42%;
       left: 50%;
       transform: translate(-50%, -50%);
+      z-index: 3;
       width: 700px;
       height: 700px;
       background: radial-gradient(
@@ -155,7 +182,7 @@
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       max-width: 760px;
       width: 100%;
     }
@@ -682,6 +709,10 @@
       0%, 100% { transform: scaleY(1); opacity: 0.45; }
       50%       { transform: scaleY(1.3); opacity: 0.8; }
     }
+    @keyframes heroKenBurns {
+      from { transform: scale(1);    }
+      to   { transform: scale(1.08); }
+    }
   </style>
 </head>
 <body>
@@ -697,6 +728,8 @@
 
   <!-- ── HERO ── -->
   <section class="hero" id="hero" aria-label="Hero">
+    <div class="hero-slides" id="heroSlides" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-texture" aria-hidden="true"></div>
     <div class="hero-glow"    aria-hidden="true"></div>
 
@@ -1169,6 +1202,68 @@
 
       if (imgScale <= 1) resetZoom(true);
     });
+
+    /* ──────────────────────────────────────────────────
+       HERO SLIDESHOW
+    ────────────────────────────────────────────────── */
+    const SLIDESHOW_FILES = [
+      'JLA_MO_26_035.jpg',
+      'JLA_MO_26_034.jpg',
+      'JLA_MO_26_003.jpg',
+      'JLA_MO_26_004.jpg',
+      'JLA_MO_26_005.jpg',
+      'JLA_MO_26_007.jpg',
+      'JLA_MO_26_010.jpg',
+      'JLA_MO_26_014.jpg',
+      'JLA_MO_26_017.jpg',
+      'JLA_MO_26_019.jpg',
+      'JLA_MO_26_023.jpg',
+      'JLA_MO_26_029.jpg',
+    ];
+
+    const heroSlides     = document.getElementById('heroSlides');
+    const SLIDE_DURATION = 5000; // ms each slide stays visible
+    let   slideIdx       = 0;
+    const slideEls       = [];
+
+    // Build slide elements
+    SLIDESHOW_FILES.forEach((file, i) => {
+      const el = document.createElement('div');
+      el.className = 'hero-slide';
+      el.style.backgroundImage = `url(${BASE_URL}${file})`;
+      heroSlides.appendChild(el);
+      slideEls.push(el);
+    });
+
+    function activateSlide(el) {
+      // Reset Ken Burns animation so it replays on every visit
+      el.style.animation = 'none';
+      el.offsetWidth;           // force reflow
+      el.style.animation = '';  // let CSS class take over
+      el.classList.add('active');
+    }
+
+    // Show first slide immediately
+    activateSlide(slideEls[0]);
+
+    // Preload the next image before it's needed
+    function preloadSlide(i) {
+      const img = new Image();
+      img.src = BASE_URL + SLIDESHOW_FILES[i];
+    }
+    preloadSlide(1);
+
+    setInterval(() => {
+      const prev = slideEls[slideIdx];
+      slideIdx   = (slideIdx + 1) % slideEls.length;
+      const curr = slideEls[slideIdx];
+
+      prev.classList.remove('active');
+      activateSlide(curr);
+
+      // Preload the one after next
+      preloadSlide((slideIdx + 1) % slideEls.length);
+    }, SLIDE_DURATION);
 
     /* ──────────────────────────────────────────────────
        NAVBAR SCROLL
